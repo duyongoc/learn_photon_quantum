@@ -1,0 +1,3537 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PhotonDeterministic</name>
+    </assembly>
+    <members>
+        <member name="T:Photon.Deterministic.FPMatrix2x2">
+            <summary>
+            Represents 2x2 column major matrix, which can be used for 2D scaling and rotation.
+            Each cell can be individually accessed as a field (M&lt;row&gt;&lt;column&gt;).
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.op_Addition(Photon.Deterministic.FPMatrix2x2,Photon.Deterministic.FPMatrix2x2)">
+            <summary>
+            Adds two matrices.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.op_Subtraction(Photon.Deterministic.FPMatrix2x2,Photon.Deterministic.FPMatrix2x2)">
+            <summary>
+            Subtracts two matrices.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.op_Multiply(Photon.Deterministic.FPMatrix2x2,Photon.Deterministic.FPMatrix2x2)">
+            <summary>
+            Multiplies two matrices.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.op_Multiply(Photon.Deterministic.FPMatrix2x2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Multiplies a vector by a matrix.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.op_Multiply(Photon.Deterministic.FP,Photon.Deterministic.FPMatrix2x2)">
+            <summary>
+            Multiplies a matrix by a factor.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.LossyScale">
+            <summary>
+            Attempts to get a scale value from the matrix. 
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.Inverted">
+            <summary>
+            Creates inverted matrix. Matrix with determinant 0 can not be inverted and result with <see cref="P:Photon.Deterministic.FPMatrix2x2.Zero"/>.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.Determinant">
+            <summary>
+            Calculates determinant of this matrix.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.Zero">
+            <summary>
+            Matrix with 0s in every cell.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.Identity">
+            <summary>
+            Matrix with 1s in the main diagonal and 0s in all other cells.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.FromRows(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Create from columns - first two values set the first row, second two values - second row.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.FromColumns(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Create from columns - first two values set the first colunn, second two values - second column.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.Rotate(Photon.Deterministic.FP)">
+            <summary>
+            Creates a rotation matrix.
+            </summary>
+            <param name="rotation">Rotation in radians.</param>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.IsIdentity">
+            <summary>
+            Returns true if this matrix is equal to the <see cref="P:Photon.Deterministic.FPMatrix2x2.Identity"/> matrix
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix2x2.Item(System.Int32)">
+            <summary>
+            Gets or sets cell M&lt;index%4&gt;&lt;index/4&gt;
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.Scale(Photon.Deterministic.FPVector2)">
+            <summary>
+            Creates a scaling matrix.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix2x2.MultiplyVector(Photon.Deterministic.FPVector2)">
+            <summary>
+            Transforms a direction by this matrix.
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.FPMatrix3x3">
+            <summary>
+            Represents 3x3 column major matrix.
+            Each cell can be individually accessed as a field (M&lt;row&gt;&lt;column&gt;), with indexing
+            indexing property[row, column] or with indexing property[index].
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Zero">
+            <summary>
+            Matrix with 0s in every cell.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Identity">
+            <summary>
+            Matrix with 1s in the main diagonal and 0s in all other cells.
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M00">
+            <summary>First row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M10">
+            <summary>Second row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M20">
+            <summary>Third row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M01">
+            <summary>First row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M11">
+            <summary>Second row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M21">
+            <summary>Third row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M02">
+            <summary>First row, third column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M12">
+            <summary>Second row, third column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix3x3.M22">
+            <summary>Third row, third column</summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.FromRows(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Create from rows - first three values set the first row, second three values - second row etc.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.FromColumns(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Create from columns - first three values set the first column, second three values - second column etc.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets or sets cell M&lt;row&gt;&lt;column&gt;.
+            </summary>
+            <param name="row"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Item(System.Int32)">
+            <summary>
+            Gets or sets cell M&lt;index%4&gt;&lt;index/4&gt;
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Transposed">
+            <summary>
+            Creates transposed matrix.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.IsIdentity">
+            <summary>
+            Returns true if this matrix is equal to the <see cref="P:Photon.Deterministic.FPMatrix3x3.Identity"/> matrix
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.Scale(Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a scaling matrix.
+            </summary>
+            <param name="scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.op_Addition(Photon.Deterministic.FPMatrix3x3,Photon.Deterministic.FPMatrix3x3)">
+            <summary>
+            Adds two matrices.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.op_Subtraction(Photon.Deterministic.FPMatrix3x3,Photon.Deterministic.FPMatrix3x3)">
+            <summary>
+            Subtracts two matrices.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.op_Multiply(Photon.Deterministic.FPMatrix3x3,Photon.Deterministic.FPMatrix3x3)">
+            <summary>
+            Multiplies two matrices.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.op_Multiply(Photon.Deterministic.FPMatrix3x3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Multiplies a vector by a matrix.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.op_Multiply(Photon.Deterministic.FP,Photon.Deterministic.FPMatrix3x3)">
+            <summary>
+            Multiplies a matrix by a factor.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.LossyScale">
+            <summary>
+            Attempts to get a scale value from the matrix. 
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Inverted">
+            <summary>
+            Creates inverted matrix. Matrix with determinant 0 can not be inverted and result with <see cref="P:Photon.Deterministic.FPMatrix3x3.Zero"/>.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Determinant">
+            <summary>
+            Calculates determinant of this matrix.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix3x3.Rotation">
+            <summary>
+            Attempts to get a rotation quaternion from this matrix.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.Rotate(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Creates a rotation matrix. Rotation is expected to be normalized.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.RotateScale(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a rotation and scaling matrix.
+            Rotation is expected to be normalized.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix3x3.InverseRotateScale(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates an inverse rotation and scaling matrix. This is significantly faster than inverting a RotateScale matrix. 
+            Rotation is expected to be normalized.
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.FPVector2">
+            <summary>
+            Represents a 2D Vector
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Normalize(Photon.Deterministic.FPVector2)">
+            <summary>
+            Normalizes the given vector. If the vector is too short to normalize, <see cref="P:Photon.Deterministic.FPVector2.Zero"/> will be returned.
+            </summary>
+            <param name="value">The vector which should be normalized.</param>
+            <returns>A normalized vector.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Normalize(Photon.Deterministic.FPVector2,Photon.Deterministic.FP@)">
+            <summary>
+            Normalizes the given vector. If the vector is too short to normalize, <see cref="P:Photon.Deterministic.FPVector2.Zero"/> will be returned.
+            </summary>
+            <param name="value">The vector which should be normalized.</param>
+            <param name="magnitude">The original vector's magnitude.</param>
+            <returns>A normalized vector.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Distance(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Calculates the distance between two vectors
+            </summary>
+            <param name="a">First vector</param>
+            <param name="b">Second vector</param>
+            <returns>The distance between the vectors</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.DistanceSquared(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Calculates the squared distance between two vectors
+            </summary>
+            <param name="a">First vector</param>
+            <param name="b">Second vector</param>
+            <returns>The squared distance between the vectors</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Dot(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Calculates the dot product of two vectors.
+            </summary>
+            <param name="a">The first vector.</param>
+            <param name="b">The second vector.</param>
+            <returns>Returns the dot product of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.ClampMagnitude(Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Clamps the magnitude of a vector
+            </summary>
+            <param name="vector">Vector to clamp</param>
+            <param name="maxLength">Max length of the supplied vector</param>
+            <returns>The resulting (potentially clamped) vector</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Rotate(Photon.Deterministic.FPVector2[],Photon.Deterministic.FP)">
+            <summary>
+            Rotates each vector of <paramref name="vectors"/> by <paramref name="radians"/> radians.
+            </summary>
+            Rotation is counterclockwise.
+            <param name="vectors"></param>
+            <param name="radians"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Rotate(Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Rotates <paramref name="vector"/> by <paramref name="radians"/> radians.
+            </summary>
+            Rotation is counterclockwise.
+            <param name="vector"></param>
+            <param name="radians"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Rotate(Photon.Deterministic.FPVector2[],Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Rotates each vector of <paramref name="vectors"/> by an angle <paramref name="sin"/> is the sine of and <paramref name="cos"/> is the cosine of.
+            </summary>
+            Rotation is performed counterclockwise.
+            <param name="vectors"></param>
+            <param name="sin"></param>
+            <param name="cos"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Rotate(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Rotates <paramref name="vector"/> by an angle <paramref name="sin"/> is the sine of and <paramref name="cos"/> is the cosine of.
+            </summary>
+            Rotation is performed counterclockwise.
+            <param name="vector"></param>
+            <param name="sin"></param>
+            <param name="cos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Cross(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            The perp-dot product (a 2D equivalent of the 3D cross product) of two vectors.
+            </summary>
+            <param name="a">The first vector.</param>
+            <param name="b">The second vector.</param>
+            <returns>The cross product of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Reflect(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Reflects a vector off the line defined by a normal.
+            </summary>
+            <param name="vector">Vector to be reflected.</param>
+            <param name="normal">Normal along which the vector is reflected. Expected to be normalized.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Clamp(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Clamps each component of <paramref name="value"/> to the range [<paramref name="min"/>, <paramref name="max"/>]
+            </summary>
+            <param name="value"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Lerp(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            <paramref name="t"/> is clamped to the range [0, 1]
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.LerpUnclamped(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Max(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Gets a vector with the maximum x and y values of both vectors.
+            </summary>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns>A vector with the maximum x and y values of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Max(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Gets a vector with the maximum x and y values of all the vectors. If
+            <paramref name="vectors"/> is null or empty, return <see cref="P:Photon.Deterministic.FPVector2.Zero"/>.
+            </summary>
+            <param name="vectors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Min(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Gets a vector with the minimum x and y values of both vectors.
+            </summary>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns>A vector with the minimum x and y values of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Min(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Gets a vector with the min x and y values of all the vectors. If
+            <paramref name="vectors"/> is null or empty, return <see cref="P:Photon.Deterministic.FPVector2.Zero"/>.
+            </summary>
+            <param name="vectors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Scale(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Multiplies each component of the vector by the same components of the provided vector.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Angle(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns the angle in degrees between <paramref name="a"/> and <paramref name="b"/>.
+            <remarks>
+            See also: <see cref="M:Photon.Deterministic.FPVector2.Radians(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)"/>, <seealso cref="M:Photon.Deterministic.FPVector2.RadiansSigned(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)"/>, <seealso cref="M:Photon.Deterministic.FPVector2.RadiansSkipNormalize(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)"/>, <seealso cref="M:Photon.Deterministic.FPVector2.RadiansSignedSkipNormalize(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)"/>,
+            </remarks>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculateRight(Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns vector rotated by 90 degrees clockwise.
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculateLeft(Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns vector rotated by 90 degrees counterclockwise.
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.IsRightOf(Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns true if this vector is on the right side of <paramref name="vector"/>
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.IsLeftOf(Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns true if this vector is on the left side of <paramref name="vector"/>
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Determinant(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns determinant of two 2d vectors which is handy to check the angle between them (method is identical to FPVector2.Cross).
+            Determinant == 0 -> Vector1 and Vector2 are collinear 
+            Determinant less than 0 -> Vector1 is left of Vector2
+            Determinant greater than 0 -> Vector1 is right of Vector2
+            </summary>
+            <param name="v1">Vector1</param>
+            <param name="v2">Vector2</param>
+            <returns>Determinant</returns>    
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Radians(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns radians between two vectors.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.RadiansSkipNormalize(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns radians between two vectors. Vectors are assumed to be normalized.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.RadiansSigned(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns radians between two vectors. The result will be a negative number if 
+            <paramref name="b"/> is on the right side of <paramref name="a"/>.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.RadiansSignedSkipNormalize(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns radians between two vectors. The result will be a negative number if 
+            <paramref name="b"/> is on the right side of <paramref name="a"/>. Vectors are assumed to be normalized.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.SmoothStep(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Interpolates between <paramref name="start"/> and <paramref name="end"/> with smoothing at the limits.
+            Equivalent of calling <see cref="M:Photon.Deterministic.FPMath.SmoothStep(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)"/> for each component pair. 
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Hermite(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Equivalent of calling<see cref="M:Photon.Deterministic.FPMath.Hermite(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)"/> for each component.
+            </summary>
+            <param name="value1"></param>
+            <param name="tangent1"></param>
+            <param name="value2"></param>
+            <param name="tangent2"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.Barycentric(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Equivalent of calling <see cref="M:Photon.Deterministic.FPMath.Barycentric(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)"/> for each component.
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <param name="value3"></param>
+            <param name="t1"></param>
+            <param name="t2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CatmullRom(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Equivalent of calling <see cref="M:Photon.Deterministic.FPMath.CatmullRom(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)"/> for each component.
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <param name="value3"></param>
+            <param name="value4"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.IsPolygonConvex(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Returns true if the polygon defined by <paramref name="vertices"/> is convex.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculatePolygonNormals(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Calculates a normal for each edge of a polygon defined by <paramref name="vertices"/>.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.PolygonNormalsAreValid(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Returns true if all normals of a polygon defined by <paramref name="vertices"/> are non-zeroed.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.RecenterPolygon(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Shifts polygon defined by <paramref name="vertices"/> so that (0,0) becomes its center.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculatePolygonArea(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Retruns an area of a polygon defined by <paramref name="vertices"/>.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculatePolygonCentroid(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Returns a centroid of a polygon defined by <paramref name="vertices"/>.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculatePolygonInertiaFactor(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Calculates the mass moment of inertia factor of a polygon defined by <paramref name="vertices"/>.
+            </summary>
+            <remarks>To compute a body mass moment of inertia, multiply the factor by the body mass.</remarks>
+            <param name="vertices">The 2D vertices that define the polygon.</param>
+            <returns>The mass moment of inertia factor of the polygon.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculatePolygonLocalSupport(Photon.Deterministic.FPVector2[],Photon.Deterministic.FPVector2@)">
+            <summary>
+            Calculates the support point in a direction <paramref name="localDir"/> of a polygon defined by <paramref name="vertices"/>.
+            <remarks>A support point is the furthest point of a shape in a given direction.</remarks>
+            <remarks>Both support point and direction are expressed in the local space of the polygon.</remarks>
+            <remarks>The polygon vertices are expected to be counterclockwise.</remarks>
+            </summary>
+            <param name="vertices">The 2D vertices that define the polygon.</param>
+            <param name="localDir">The direction, in local space, in which the support point will be calculated.</param>
+            <returns>The support point, in local space.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.CalculatePolygonRadius(Photon.Deterministic.FPVector2[])">
+            <summary>
+            Returns a radius of a centered polygon defined by <paramref name="vertices"/>.
+            </summary>
+            <param name="vertices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.MoveTowards(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Calculate a position between the points specified by <paramref name="from"/> and <paramref name="to"/>, moving no farther than the distance specified by <paramref name="maxDelta"/>.
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="maxDelta"></param>
+            <returns></returns>s
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Equality(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns true if two vectors are exactly equal.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Inequality(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns true if two vectors are not exactly equal.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_UnaryNegation(Photon.Deterministic.FPVector2)">
+            <summary>
+            Negates each component of <paramref name="v"/> vector.
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Addition(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Adds two vectors.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Subtraction(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Subtracts <paramref name="b"/> from <paramref name="a"/>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Multiply(Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Multiplies each component of <paramref name="v"/> times <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Multiply(Photon.Deterministic.FP,Photon.Deterministic.FPVector2)">
+            <summary>
+            Multiplies each component of <paramref name="v"/> times <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Multiply(Photon.Deterministic.FPVector2,System.Int32)">
+            <summary>
+            Multiplies each component of <paramref name="v"/> times <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Multiply(System.Int32,Photon.Deterministic.FPVector2)">
+            <summary>
+            Multiplies each component of <paramref name="v"/> times <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Division(Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Divides each component of <paramref name="v"/> by <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.op_Division(Photon.Deterministic.FPVector2,System.Int32)">
+            <summary>
+            Divides each component of <paramref name="v"/> by <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Zero">
+            <summary>
+            A vector with components (0,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.One">
+            <summary>
+            A vector with components (1,1);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Right">
+            <summary>
+            A vector with components (1,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Left">
+            <summary>
+            A vector with components (-1,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Up">
+            <summary>
+            A vector with components (0,1);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Down">
+            <summary>
+            A vector with components (0,-1);
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPVector2.X">
+            <summary>The X component of the vector.</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPVector2.Y">
+            <summary>The Y component of the vector.</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Magnitude">
+            <summary>
+            Gets the length of the vector.
+            </summary>
+            <returns>Returns the length of the vector.</returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.SqrMagnitude">
+            <summary>
+            Gets the squared length of the vector.
+            </summary>
+            <returns>Returns the squared length of the vector.</returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.Normalized">
+            <summary>
+            Gets a normalized version of the vector.
+            </summary>
+            <returns>Returns a normalized version of the vector.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.#ctor(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Creates a new FPVector2 instance.
+            </summary>
+            <param name="x">X component</param>
+            <param name="y">Y component</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector2.#ctor(Photon.Deterministic.FP)">
+            <summary>
+            Creates a new FPVector2 instance.
+            </summary>
+            <param name="value">A value to be assigned to both components</param>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.XOY">
+            <summary>
+            Returns vector (X, 0, Y).
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.XYO">
+            <summary>
+            Returns vector (X, Y, 0).
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector2.OXY">
+            <summary>
+            Returns vector (0, X, Y).
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.FPVector3">
+            <summary>
+            Represents a 3D Vector
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Normalize(Photon.Deterministic.FPVector3)">
+            <summary>
+            Normalizes the given vector. If the vector is too short to normalize, <see cref="P:Photon.Deterministic.FPVector3.Zero"/> will be returned.
+            </summary>
+            <param name="value">The vector which should be normalized.</param>
+            <returns>A normalized vector.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Normalize(Photon.Deterministic.FPVector3,Photon.Deterministic.FP@)">
+            <summary>
+            Normalizes the given vector. If the vector is too short to normalize, <see cref="P:Photon.Deterministic.FPVector3.Zero"/> will be returned.
+            </summary>
+            <param name="value">The vector which should be normalized.</param>
+            <param name="magnitude">The original vector's magnitude.</param>
+            <returns>A normalized vector.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Abs(Photon.Deterministic.FPVector3)">
+            <summary>
+            Returns a vector where each component is the absolute value of same component in <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Lerp(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            <paramref name="t"/> is clamped to the range [0, 1]
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.LerpUnclamped(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Slerp(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Spherically interpolates between <paramref name="from"/> and <paramref name="to"/> by <paramref name="t"/>,
+            which is clamped to the range [0, 1].
+            </summary>
+            <remarks>Input vectors are normalized and treated as directions.
+            The resultant vector has direction spherically interpolated using the angle and magnitude linearly interpolated between the magnitudes of <paramref name="to"/> and <paramref name="from"/>.</remarks>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.SlerpUnclamped(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Spherically interpolates between <paramref name="from"/> and <paramref name="to"/> by <paramref name="t"/>.
+            </summary>
+            <remarks>Input vectors are normalized and treated as directions.
+            The resultant vector has direction spherically interpolated using the angle and magnitude linearly interpolated between the magnitudes of <paramref name="to"/> and <paramref name="from"/>.</remarks>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Scale(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Multiplies each component of the vector by the same components of the provided vector.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.ClampMagnitude(Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Clamps the magnitude of a vector
+            </summary>
+            <param name="vector">Vector to clamp</param>
+            <param name="maxLength">Max length of the supplied vector</param>
+            <returns>The resulting (potentially clamped) vector</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Min(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Gets a vector with the minimum x,y and z values of both vectors.
+            </summary>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns>A vector with the minimum x,y and z values of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Max(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Gets a vector with the maximum x,y and z values of both vectors.
+            </summary>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns>A vector with the maximum x,y and z values of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Distance(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Calculates the distance between two vectors
+            </summary>
+            <param name="a">First vector</param>
+            <param name="b">Second vector</param>
+            <returns>The distance between the vectors</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.DistanceSquared(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Calculates the squared distance between two vectors
+            </summary>
+            <param name="a">First vector</param>
+            <param name="b">Second vector</param>
+            <returns>The squared distance between the vectors</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Cross(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            The cross product of two vectors.
+            </summary>
+            <param name="a">The first vector.</param>
+            <param name="b">The second vector.</param>
+            <returns>The cross product of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Dot(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Calculates the dot product of two vectors.
+            </summary>
+            <param name="a">The first vector.</param>
+            <param name="b">The second vector.</param>
+            <returns>Returns the dot product of both vectors.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.SignedAngle(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Returns the signed angle in degrees between <paramref name="a"/> and <paramref name="b"/> when rotated around an <paramref name="axis"/>.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Angle(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Returns the angle in degrees between <paramref name="a"/> and <paramref name="b"/>.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.MoveTowards(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Calculate a position between the points specified by <paramref name="from"/> and <paramref name="to"/>, moving no farther than the distance specified by <paramref name="maxDelta"/>.
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="maxDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Project(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Projects a vector onto another vector.
+            </summary>
+            <param name="vector"></param>
+            <param name="normal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.ProjectOnPlane(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Projects a vector onto a plane defined by a normal orthogonal to the plane.
+            </summary>
+            <param name="vector"></param>
+            <param name="planeNormal"></param>
+            <returns>The location of the vector on the plane. </returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Reflect(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Reflects a vector off the plane defined by a normal.
+            </summary>
+            <param name="vector"></param>
+            <param name="normal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Barycentric(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FP@,Photon.Deterministic.FP@,Photon.Deterministic.FP@)">
+            <summary>
+            Creates barycentric coordinates for a point inside a triangle. This method has precision issues due to multiple dot product in row this marked internal..
+            </summary>
+            <param name="p">Point of interest in triangle</param>
+            <param name="p0">Vertex 1</param>
+            <param name="p1">Vertex 2</param>
+            <param name="p2">Vertex 3</param>
+            <param name="u">Barycentric variable for p0</param>
+            <param name="v">Barycentric variable for p1</param>
+            <param name="w">Barycentric variable for p2</param>
+            <returns>True, if point is inside the triangle. Out parameter are not set if the point is outside the triangle.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Equality(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Returns true if two vectors are exactly equal.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Inequality(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Returns true if two vectors are not exactly equal.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_UnaryNegation(Photon.Deterministic.FPVector3)">
+            <summary>
+            Negates each component of <paramref name="v"/> vector.
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Multiply(Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Multiplies each component of <paramref name="v"/> times <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Multiply(Photon.Deterministic.FP,Photon.Deterministic.FPVector3)">
+            <summary>
+            Multiplies each component of <paramref name="v"/> times <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Division(Photon.Deterministic.FPVector3,Photon.Deterministic.FP)">
+            <summary>
+            Divides each component of <paramref name="v"/> by <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Division(Photon.Deterministic.FPVector3,System.Int32)">
+            <summary>
+            Divides each component of <paramref name="v"/> by <paramref name="s"/>.
+            </summary>
+            <param name="v"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Subtraction(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Subtracts <paramref name="b"/> from <paramref name="a"/>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.op_Addition(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Adds two vectors.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Photon.Deterministic.FPVector3.X">
+            <summary>The X component of the vector.</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPVector3.Y">
+            <summary>The Y component of the vector.</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPVector3.Z">
+            <summary>The Z component of the vector.</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Zero">
+            <summary>
+            A vector with components (0,0,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Left">
+            <summary>
+            A vector with components (-1,0,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Right">
+            <summary>
+            A vector with components (1,0,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Up">
+            <summary>
+            A vector with components (0,1,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Down">
+            <summary>
+            A vector with components (0,-1,0);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Back">
+            <summary>
+            A vector with components (0,0,-1);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Forward">
+            <summary>
+            A vector with components (0,0,1);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.One">
+            <summary>
+            A vector with components (1,1,1);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.MinValue">
+            <summary>
+            A vector with components 
+            (FP.MinValue,FP.MinValue,FP.MinValue);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.MaxValue">
+            <summary>
+            A vector with components 
+            (FP.MaxValue,FP.MaxValue,FP.MaxValue);
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.SqrMagnitude">
+            <summary>
+            Gets the squared length of the vector.
+            </summary>
+            <returns>Returns the squared length of the vector.</returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Magnitude">
+            <summary>
+            Gets the length of the vector.
+            </summary>
+            <returns>Returns the length of the vector.</returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPVector3.Normalized">
+            <summary>
+            Gets a normalized version of the vector.
+            </summary>
+            <returns>Returns a normalized version of the vector.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor initializing a new instance of the structure
+            </summary>
+            <param name="x">The X component of the vector.</param>
+            <param name="y">The Y component of the vector.</param>
+            <param name="z">The Z component of the vector.</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor initializing a new instance of the structure
+            </summary>
+            <param name="x">The X component of the vector.</param>
+            <param name="y">The Y component of the vector.</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.#ctor(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Constructor initializing a new instance of the structure
+            </summary>
+            <param name="x">The X component of the vector.</param>
+            <param name="y">The Y component of the vector.</param>
+            <param name="z">The Z component of the vector.</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.#ctor(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Constructor initializing a new instance of the structure
+            </summary>
+            <param name="x">The X component of the vector.</param>
+            <param name="y">The Y component of the vector.</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.ToString">
+            <summary>
+            Builds a string from the FPVector3.
+            </summary>
+            <returns>A string containing all three components.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.Equals(System.Object)">
+            <summary>
+            Tests if an object is equal to this vector.
+            </summary>
+            <param name="obj">The object to test.</param>
+            <returns>Returns true if they are euqal, otherwise false.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPVector3.GetHashCode">
+            <summary>
+            Gets the hashcode of the vector.
+            </summary>
+            <returns>Returns the hashcode of the vector.</returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Pi">
+            <summary>Pi number.</summary>
+            <summary>Closest double: 3.14159265346825</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.PiInv">
+            <summary>1/Pi.</summary>
+            <summary>Closest double: 0.318309886148199</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.PiTimes2">
+            <summary>2 * Pi.</summary>
+            <summary>Closest double: 6.28318530716933</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.PiOver2">
+            <summary>Pi / 2.</summary>
+            <summary>Closest double: 1.57079632673413</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.PiOver2Inv">
+            <summary>2 / Pi.</summary>
+            <summary>Closest double: 0.636619772296399</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.PiOver4">
+            <summary>Pi / 4.</summary>
+            <summary>Closest double: 0.785398163367063</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Pi3Over4">
+            <summary>3 * Pi / 4.</summary>
+            <summary>Closest double: 2.35619449010119</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Deg2Rad">
+            <summary>Closest double: 0.0174532923847437</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Rad2Deg">
+            <summary>Closest double: 57.2957795129623</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Rad_180">
+            <summary>Closest double: 3.14159265346825</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Rad_90">
+            <summary>Closest double: 1.57079632673413</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Rad_45">
+            <summary>Closest double: 0.785398163367063</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Rad_22_50">
+            <summary>Closest double: 0.392699081683531</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_01">
+            <summary>Closest double: 0.00999999977648258</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_02">
+            <summary>Closest double: 0.0199999997857958</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_03">
+            <summary>Closest double: 0.029999999795109</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_04">
+            <summary>Closest double: 0.0399999998044223</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_05">
+            <summary>Closest double: 0.0499999998137355</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_10">
+            <summary>Closest double: 0.0999999998603016</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_20">
+            <summary>Closest double: 0.199999999953434</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_33">
+            <summary>Closest double: 0.333333333255723</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._0_99">
+            <summary>Closest double: 0.989999999990687</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_01">
+            <summary>Closest double: 1.00999999977648</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_02">
+            <summary>Closest double: 1.0199999997858</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_03">
+            <summary>Closest double: 1.02999999979511</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_04">
+            <summary>Closest double: 1.03999999980442</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_05">
+            <summary>Closest double: 1.04999999981374</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_10">
+            <summary>Closest double: 1.0999999998603</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_20">
+            <summary>Closest double: 1.19999999995343</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_33">
+            <summary>Closest double: 1.33333333325572</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor._1_99">
+            <summary>Closest double: 1.98999999999069</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.EN1">
+            <summary>Closest double: 0.0999999998603016</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.EN2">
+            <summary>Closest double: 0.00999999977648258</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.EN3">
+            <summary>Closest double: 0.000999999931082129</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.EN4">
+            <summary>Closest double: 9.99998301267624E-05</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.EN5">
+            <summary>Closest double: 9.99984331429005E-06</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.E">
+            <summary>E number.</summary>
+            <summary>Closest double: 2.71828182833269</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Log2_E">
+            <summary>Closest double: 1.44269504072145</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPHighPrecisionDivisor.Log2_10">
+            <summary>Closest double: 3.32192809483968</summary>
+        </member>
+        <member name="T:Photon.Deterministic.FP">
+            <summary>
+            A fixed-point number. 16 lower bits are used for the decimal part, 48 for the integral part.
+            </summary>
+            However, majority of internal code and the multiplication operator perform fast multiplication,
+            where the result can use at most 32 bits for the integral part and overflows are not detected.
+            This means that you should stay in <see cref="T:System.Int16"/> range.
+            <seealso cref="P:Photon.Deterministic.FP.UseableMax"/>
+            <seealso cref="P:Photon.Deterministic.FP.UseableMin"/>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.FP.SmallestNonZero">
+            <summary>Closest double: 1.52587890625E-05</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.MinValue">
+            <summary>Closest double: -140737488355328</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.MaxValue">
+            <summary>Closest double: 140737488355328</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.UseableMin">
+            <summary>
+            ‭All values between <see cref="P:Photon.Deterministic.FP.UseableMin" /> and <see cref="P:Photon.Deterministic.FP.UseableMax" /> (inclusive) are guaranteed not 
+            to overflow when multiplicated. 
+            </summary>
+            <summary>Closest double: -32768</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.UseableMax">
+            <summary>
+            All values between <see cref="P:Photon.Deterministic.FP.UseableMin" /> and <see cref="P:Photon.Deterministic.FP.UseableMax" /> (inclusive) are guaranteed not 
+            to overflow when multiplicated.
+            </summary>
+            <summary>Closest double: 32767.9999847412</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Pi">
+            <summary>Pi number.</summary>
+            <summary>Closest double: 3.14158630371094</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.PiInv">
+            <summary>1/Pi.</summary>
+            <summary>Closest double: 0.31829833984375</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.PiTimes2">
+            <summary>2 * Pi.</summary>
+            <summary>Closest double: 6.28317260742188</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.PiOver2">
+            <summary>Pi / 2.</summary>
+            <summary>Closest double: 1.57078552246094</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.PiOver2Inv">
+            <summary>2 / Pi.</summary>
+            <summary>Closest double: 0.636611938476563</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.PiOver4">
+            <summary>Pi / 4.</summary>
+            <summary>Closest double: 0.785385131835938</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Pi3Over4">
+            <summary>3 * Pi / 4.</summary>
+            <summary>Closest double: 2.35618591308594</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Deg2Rad">
+            <summary>Closest double: 0.0174407958984375</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Rad2Deg">
+            <summary>Closest double: 57.2957763671875</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0">
+            <summary>Closest double: 0</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1">
+            <summary>Closest double: 1</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._2">
+            <summary>Closest double: 2</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._3">
+            <summary>Closest double: 3</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._4">
+            <summary>Closest double: 4</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._5">
+            <summary>Closest double: 5</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._6">
+            <summary>Closest double: 6</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._7">
+            <summary>Closest double: 7</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._8">
+            <summary>Closest double: 8</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._9">
+            <summary>Closest double: 9</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._10">
+            <summary>Closest double: 10</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._99">
+            <summary>Closest double: 99</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._100">
+            <summary>Closest double: 100</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._200">
+            <summary>Closest double: 200</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1000">
+            <summary>Closest double: 1000</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._10000">
+            <summary>Closest double: 10000</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_01">
+            <summary>Closest double: 0.0099945068359375</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_02">
+            <summary>Closest double: 0.019989013671875</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_10">
+            <summary>Closest double: 0.0999908447265625</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_20">
+            <summary>Closest double: 0.199996948242188</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_25">
+            <summary>Closest double: 0.25</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_50">
+            <summary>Closest double: 0.5</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_75">
+            <summary>Closest double: 0.75</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_03">
+            <summary>Closest double: 0.0299835205078125</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_04">
+            <summary>Closest double: 0.03997802734375</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_05">
+            <summary>Closest double: 0.0499725341796875</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_33">
+            <summary>Closest double: 0.333328247070313</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._0_99">
+            <summary>Closest double: 0.990005493164063</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Minus_1">
+            <summary>Closest double: -1</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Rad_180">
+            <summary>Closest double: 3.14158630371094</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Rad_90">
+            <summary>Closest double: 1.57078552246094</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Rad_45">
+            <summary>Closest double: 0.785385131835938</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Rad_22_50">
+            <summary>Closest double: 0.392684936523438</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_01">
+            <summary>Closest double: 1.00999450683594</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_02">
+            <summary>Closest double: 1.01998901367188</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_03">
+            <summary>Closest double: 1.02999877929688</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_04">
+            <summary>Closest double: 1.03999328613281</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_05">
+            <summary>Closest double: 1.04998779296875</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_10">
+            <summary>Closest double: 1.09999084472656</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_20">
+            <summary>Closest double: 1.19999694824219</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_25">
+            <summary>Closest double: 1.25</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_50">
+            <summary>Closest double: 1.5</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_75">
+            <summary>Closest double: 1.75</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_33">
+            <summary>Closest double: 1.33332824707031</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP._1_99">
+            <summary>Closest double: 1.99000549316406</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.EN1">
+            <summary>Closest double: 0.0999908447265625</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.EN2">
+            <summary>Closest double: 0.0099945068359375</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.EN3">
+            <summary>Closest double: 0.0009918212890625</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.EN4">
+            <summary>Closest double: 9.1552734375E-05</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.EN5">
+            <summary>Closest double: 0</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Epsilon">
+            <summary>Closest double: 0.0009918212890625</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.E">
+            <summary>Closest double: 2.71827697753906</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Log2_E">
+            <summary>Closest double: 1.44268798828125</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.Log2_10">
+            <summary>Closest double: 3.32191467285156</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.AsLong">
+            <summary>
+            Returns integral part as long.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.AsInt">
+            <summary>
+            Return integral part as int.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.AsShort">
+            <summary>
+            Return integral part as int.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.AsFloat">
+            <summary>
+            Converts to float.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FP.AsDouble">
+            <summary>
+            Converts to double.
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.FPBounds2">
+            <summary>
+            Represents an 2D axis aligned bounding box (AABB).
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="F:Photon.Deterministic.FPBounds2.Center">
+            <summary>
+            Center of the bounding box.
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPBounds2.Extents">
+            <summary>
+            Extents of the bounding box (half of the size).
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPBounds2.Max">
+            <summary>
+            Gets or sets the maximal point of the box. This is always equal to <see cref="F:Photon.Deterministic.FPBounds2.Center"/> + <see cref="F:Photon.Deterministic.FPBounds2.Extents"/>.
+            Setting this property will not affect <see cref="P:Photon.Deterministic.FPBounds2.Min"/>.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPBounds2.Min">
+            <summary>
+            Gets or sets the minimal point of the box. This is always equal to <see cref="F:Photon.Deterministic.FPBounds2.Center"/> - <see cref="F:Photon.Deterministic.FPBounds2.Extents"/>.
+            Setting this property will not affect <see cref="P:Photon.Deterministic.FPBounds2.Max"/>.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds2.#ctor(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Create a new Bounds with the given center and extents.
+            </summary>
+            <param name="center">Center point.</param>
+            <param name="extents">Extents (half the size).</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds2.Expand(Photon.Deterministic.FP)">
+            <summary>
+            Expand bounds by 0.5 * <paramref name="amount"/> in both directions.
+            </summary>
+            <param name="amount"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds2.Expand(Photon.Deterministic.FPVector2)">
+            <summary>
+            Expand bounds by 0.5 * <paramref name="amount"/> in both directions.
+            </summary>
+            <param name="amount"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds2.Encapsulate(Photon.Deterministic.FPVector2)">
+            <summary>
+            Expand bounds to contain <paramref name="point"/> (if needed).
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds2.Encapsulate(Photon.Deterministic.FPBounds2)">
+            <summary>
+            Expand bounds to contain <paramref name="bounds"/> (if needed).
+            </summary>
+            <param name="bounds"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds2.Intersects(Photon.Deterministic.FPBounds2)">
+            <summary>
+            Returns true if there is an intersection between bounds.
+            </summary>
+            <param name="bounds"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Deterministic.FPBounds3">
+            <summary>
+            Represents an 3D axis aligned bounding box (AABB).
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="F:Photon.Deterministic.FPBounds3.Center">
+            <summary>
+            Center of the bounding box.
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPBounds3.Extents">
+            <summary>
+            Extents of the bounding box (half of the size).
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPBounds3.Max">
+            <summary>
+            Gets or sets the maximal point of the box. This is always equal to <see cref="F:Photon.Deterministic.FPBounds3.Center"/> + <see cref="F:Photon.Deterministic.FPBounds3.Extents"/>.
+            Setting this property will not affect <see cref="P:Photon.Deterministic.FPBounds3.Min"/>.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPBounds3.Min">
+            <summary>
+            Gets or sets the minimal point of the box. This is always equal to <see cref="F:Photon.Deterministic.FPBounds3.Center"/> - <see cref="F:Photon.Deterministic.FPBounds3.Extents"/>.
+            Setting this property will not affect <see cref="P:Photon.Deterministic.FPBounds3.Max"/>.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds3.#ctor(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Create a new Bounds with the given center and extents.
+            </summary>
+            <param name="center">Center point.</param>
+            <param name="extents">Extents (half the size).</param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds3.Expand(Photon.Deterministic.FP)">
+            <summary>
+            Expand bounds by 0.5 * <paramref name="amount"/> in both directions.
+            </summary>
+            <param name="amount"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds3.Expand(Photon.Deterministic.FPVector3)">
+            <summary>
+            Expand bounds by 0.5 * <paramref name="amount"/> in both directions.
+            </summary>
+            <param name="amount"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds3.Encapsulate(Photon.Deterministic.FPVector3)">
+            <summary>
+            Expand bounds to contain <paramref name="point"/> (if needed).
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds3.Encapsulate(Photon.Deterministic.FPBounds3)">
+            <summary>
+            Expand bounds to contain <paramref name="bounds"/> (if needed).
+            </summary>
+            <param name="bounds"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPBounds3.Intersects(Photon.Deterministic.FPBounds3)">
+            <summary>
+            Returns true if there is an intersection between bounds.
+            </summary>
+            <param name="bounds"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Deterministic.FPMath">
+            <summary>
+            A collection of common math functions.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Sin(Photon.Deterministic.FP)">
+            <summary>
+            Returns the sine of angle <paramref name="rad"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SinHighPrecision(Photon.Deterministic.FP)">
+            <summary>
+            Returns the high precision sine of angle <paramref name="rad"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Cos(Photon.Deterministic.FP)">
+            <summary>
+            Returns the cosine of angle <paramref name="rad"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.CosHighPrecision(Photon.Deterministic.FP)">
+            <summary>
+            Returns the high precision cosine of angle <paramref name="rad"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SinCos(Photon.Deterministic.FP,Photon.Deterministic.FP@,Photon.Deterministic.FP@)">
+            <summary>
+            Calculates sine and cosine of angle <paramref name="rad"/>. It is faster than 
+            calling <see cref="M:Photon.Deterministic.FPMath.Sin(Photon.Deterministic.FP)"/>  and <see cref="M:Photon.Deterministic.FPMath.Cos(Photon.Deterministic.FP)"/> separately.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <param name="sin"></param>
+            <param name="cos"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SinCosHighPrecision(Photon.Deterministic.FP,Photon.Deterministic.FP@,Photon.Deterministic.FP@)">
+            <summary>
+            Calculates high precision sine and cosine of angle <paramref name="rad"/>. It is faster than 
+            calling <see cref="M:Photon.Deterministic.FPMath.SinHighPrecision(Photon.Deterministic.FP)"/>  and <see cref="M:Photon.Deterministic.FPMath.CosHighPrecision(Photon.Deterministic.FP)"/> separately.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <param name="sin"></param>
+            <param name="cos"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Tan(Photon.Deterministic.FP)">
+            <summary>
+            Returns the tangent of angle <paramref name="rad"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="rad">Angle in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Asin(Photon.Deterministic.FP)">
+            <summary>
+            Returns the arc-sine of <paramref name="value"/> - the angle in radians whose sine is <paramref name="value"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Acos(Photon.Deterministic.FP)">
+            <summary>
+            Returns the arc-cosine of <paramref name="value"/> - the angle in radians whose cosine is <paramref name="value"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Atan(Photon.Deterministic.FP)">
+            <summary>
+            Returns the arc-tangent of <paramref name="value"/> - the angle in radians whose tangent is <paramref name="value"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Atan2(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns the angle in radians whose <see cref="M:Photon.Deterministic.FPMath.Tan(Photon.Deterministic.FP)"/> is <paramref name="y"/>/<paramref name="x"/>. This function returns correct angle even if x is zero.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="y"></param>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Sign(Photon.Deterministic.FP)">
+            <summary>
+            Returns the sign of <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns>1 when positive or zero, -1 when negative</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SignZero(Photon.Deterministic.FP)">
+            <summary>
+            Returns the sign of <paramref name="value"/> if it is non-zero.
+            </summary>
+            <param name="value"></param>
+            <returns>1 when positive, 0 when zero, -1 when negative</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SignInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns the sign of <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns>1 when positive or zero, -1 when negative</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SignZeroInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns the sign of <paramref name="value"/> if it is non-zero.
+            </summary>
+            <param name="value"></param>
+            <returns>1 when positive, 0 when zero, -1 when negative</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.NextPowerOfTwo(System.Int32)">
+            <summary>
+            Returns the next power of two that is equal to, or greater than, the argument.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Abs(Photon.Deterministic.FP)">
+            <summary>
+            Returns the absolute value of the argument.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Round(Photon.Deterministic.FP)">
+            <summary>
+            Returns <paramref name="value"/> rounded to the nearest integer.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.RoundToInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns <paramref name="value"/> rounded to the nearest integer.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Floor(Photon.Deterministic.FP)">
+            <summary>
+            Returns the largest integer smaller than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.FloorToInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns the largest integer smaller than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Ceiling(Photon.Deterministic.FP)">
+            <summary>
+            Returns the smallest integer larger than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.CeilToInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns the smallest integer larger than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Max(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns the largest of two or more values.
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Min(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns the smallest of two or more values.
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Min(Photon.Deterministic.FP[])">
+            <summary>
+            Returns the smallest of two or more values.
+            </summary>
+            <param name="numbers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Max(Photon.Deterministic.FP[])">
+            <summary>
+            Returns the largest of two or more values.
+            </summary>
+            <param name="numbers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.MinMax(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP@,Photon.Deterministic.FP@)">
+            <summary>
+            
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Clamp(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Clamps the given value between the given minimum and maximum values.
+            </summary>
+            <param name="value"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Clamp01(Photon.Deterministic.FP)">
+            <summary>
+            Clamps the given value between 0 and 1.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Clamp(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Clamps the given value between the given minimum and maximum values.
+            </summary>
+            <param name="value"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Clamp(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Clamps the given value between the given minimum and maximum values.
+            </summary>
+            <param name="value"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.ClampUseable(Photon.Deterministic.FP)">
+            <summary>
+            Clamps the given value between <see cref="P:Photon.Deterministic.FP.UseableMin"/> and <see cref="P:Photon.Deterministic.FP.UseableMax"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Fraction(Photon.Deterministic.FP)">
+            <summary>
+            Returns the fractional part of the argument.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Repeat(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Loops the value <paramref name="t"/>, so that it is never larger than <paramref name="length"/> and never smaller than 0.
+            </summary>
+            <param name="t"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.LerpRadians(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            <paramref name="t"/> is clamped to the range [0, 1]. The difference between <paramref name="start"/> and <paramref name="end"/>
+            is converted to a [-Pi/2, Pi/2] range.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Lerp(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            <paramref name="t"/> is clamped to the range [0, 1]
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.LerpUnclamped(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Linearly interpolates between <paramref name="start"/> and <paramref name="end"/> by <paramref name="t"/>.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.InverseLerp(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Calculates the linear parameter that produces the interpolant <paramref name="value"/> within the range [<paramref name="start"/>, <paramref name="end"/>].
+            The result is clamped to the range [0, 1].
+            <remarks>Returns 0 if <paramref name="start"/> and <paramref name="end"/> are equal.</remarks>
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.InverseLerpUnclamped(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Calculates the linear parameter that produces the interpolant <paramref name="value"/> within the range [<paramref name="start"/>, <paramref name="end"/>].
+            <remarks>The resultant factor is NOT clamped to the range [0, 1].</remarks>
+            <remarks>Returns 0 if <paramref name="start"/> and <paramref name="end"/> are equal.</remarks>
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.SmoothStep(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Interpolates between <paramref name="start"/> and <paramref name="end"/> with smoothing at the limits.
+            Equivalent of calling <see cref="M:Photon.Deterministic.FPMath.Hermite(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)"/> with tangents set to 0 and clamping <paramref name="t"/> between 0 and 1. 
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Sqrt(Photon.Deterministic.FP)">
+            <summary>
+            Returns square root of <paramref name="value"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="value"/> is less than 0</exception>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Barycentric(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Performs barycentric interpolation.
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <param name="value3"></param>
+            <param name="t1"></param>
+            <param name="t2"></param>
+            <returns> <paramref name="value1"/> + (<paramref name="value2"/> - <paramref name="value1"/>) * <paramref name="t1"/> + (<paramref name="value3"/> - <paramref name="value1"/>) * <paramref name="t2"/>
+            </returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.CatmullRom(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Performs Cotmull-Rom interpolation.
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <param name="value3"></param>
+            <param name="value4"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Hermite(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Performs cubic Hermite interpolation.
+            </summary>
+            <param name="value1"></param>
+            <param name="tangent1"></param>
+            <param name="value2"></param>
+            <param name="tangent2"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.ModuloClamped(System.Int64,System.Int64)">
+            <summary>
+            Performs modulo operation without forcing the sign of the dividend: So that ModuloClamped(-9, 10) = 1.
+            </summary>
+            <param name="a">Dividend</param>
+            <param name="n">Divisor</param>
+            <returns>Remainder after division</returns>
+            <exception cref="T:System.InvalidOperationException">When n > Int64.MaxValue >> 2 or n &lt; Int64.MinValue >> 2</exception>
+            <exception cref="T:System.DivideByZeroException">When n == 0</exception>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.ModuloClamped(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Performs modulo operation without forcing the sign of the dividend: So that ModuloClamped(-9, 10) = 1.
+            </summary>
+            <param name="a">Dividend</param>
+            <param name="n">Divisor</param>
+            <returns>Remainder after division</returns>
+            <exception cref="T:System.InvalidOperationException">When n > <see cref="P:Photon.Deterministic.FP.UseableMax"/> or n &lt; <see cref="P:Photon.Deterministic.FP.UseableMin"/></exception>
+            <exception cref="T:System.DivideByZeroException">When n == 0</exception>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.AngleBetweenDegrees(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Calculates the smallest signed angle between any two angles. F.e. angle between -179 and 179 is -2. Rotation is ccw.
+            </summary>
+            <param name="source">Source angle in degrees</param>
+            <param name="target">Target angle in degrees</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.AngleBetweenDegreesRaw(System.Int64,System.Int64)">
+            <summary>
+            Same as AngleBetweenDegrees using Raw optimization.
+            </summary>
+            <param name="source">Source angle in degrees (Raw)</param>
+            <param name="target">Target angle in degrees (Raw)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.AngleBetweenRadians(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Calculates the smallest signed angle between any two angles.
+            </summary>
+            <param name="source">Source angle in radians</param>
+            <param name="target">Target angle in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.AngleBetweenRadiansRaw(System.Int64,System.Int64)">
+            <summary>
+            Same as AngleBetweenDegrees using Raw optimization.
+            </summary>
+            <param name="source">Source angle in radians (Raw)</param>
+            <param name="target">Target angle in radians (Raw)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Log2FloorToInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns floor of the logarithm of <paramref name="value"/> in base 2. It is much
+            faster than calling <see cref="M:Photon.Deterministic.FPMath.Log2(Photon.Deterministic.FP)"/> and then <see cref="M:Photon.Deterministic.FPMath.FloorToInt(Photon.Deterministic.FP)"/>
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Log2CeilingToInt(Photon.Deterministic.FP)">
+            <summary>
+            Returns celining of the logarithm of <paramref name="value"/> in base 2. It is much
+            faster than calling <see cref="M:Photon.Deterministic.FPMath.Log2(Photon.Deterministic.FP)"/> and then <see cref="M:Photon.Deterministic.FPMath.CeilToInt(Photon.Deterministic.FP)"/>
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Log2(Photon.Deterministic.FP)">
+            <summary>
+            Returns logarithm of <paramref name="value"/> in base 2.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Ln(Photon.Deterministic.FP)">
+            <summary>
+            Returns natural logarithm of <paramref name="value"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Log10(Photon.Deterministic.FP)">
+            <summary>
+            Returns logarithm of <paramref name="value"/> in base 10.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Log(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns logarithm of <paramref name="value"/> in base <paramref name="logBase"/>.
+            It is much more performant and precise to use Log2, Log10 and Ln if <paramref name="logBase"/> is 2, 10 or e.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="value"></param>
+            <param name="logBase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMath.Exp(Photon.Deterministic.FP)">
+            <summary>
+            Returns e raised to the specified power. The max relative error is ~0.3% in the range of [-6, 32].
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Deterministic.FPCollision">
+            <summary>
+            A collection of collision helper functions.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.TriangleCenter(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns the center of a triangle defined by three vertices.
+            </summary>
+            <param name="v0"></param>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.IsPointOnLine(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns true if a point <paramref name="point"/> lies on a line crossing <paramref name="p1"/> and <paramref name="p2"/>.
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.IsPointOnLineSegment(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Returns true if a point <paramref name="point"/> lies on a segment defined by <paramref name="p1"/> and <paramref name="p2"/>.
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.ClosestPointOnSegment(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Cast point <paramref name="point"/> on a line crossing <paramref name="p1"/> and <paramref name="p2"/>.
+            The result is clamped to lie on a segment defined by <paramref name="p1"/> and <paramref name="p2"/>.
+            </summary>
+            <param name="point"></param>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.ClosestPointOnTriangle(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Casts a point <paramref name="pt"/> on a triangle defined by three vertices.
+            </summary>
+            <param name="pt"></param>
+            <param name="t0"></param>
+            <param name="t1"></param>
+            <param name="t2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.ClosestPointOnCicle(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2)">
+            <summary>
+            Casts a point <paramref name="pt"/> on a circle.
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="pt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.TriangleContainsPointExclusive(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Checks if <paramref name="pt"/> is inside a triangle, excluding vertices and edges. Works for CW and CWW.
+            </summary>
+            <param name="pt">Point to check</param>
+            <param name="v0">vertex position 0</param>
+            <param name="v1">vertex position 1</param>
+            <param name="v2">vertex position 2</param>
+            <returns>True if <paramref name="pt"/> is inside the triangle. False if point is outside or if the point is located on an edge or vertex.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.TriangleContainsPointExclusive(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Checks if <paramref name="pt"/> is inside a triangle, excluding vertices and edges. This only checks the XZ component like the triangle is in 2D! Works for CW and CWW.
+            </summary>
+            <param name="pt">Point to check</param>
+            <param name="v0">vertex position 0</param>
+            <param name="v1">vertex position 1</param>
+            <param name="v2">vertex position 2</param>
+            <returns>True if <paramref name="pt"/> is inside the triangle. False if point is outside or if the point is located on an edge or vertex.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.TriangleContainsPointInclusive(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Checks if <paramref name="pt"/> is inside a triangle, including edges and vertices. Works for CW and CWW.
+            </summary>
+            <param name="pt">Point to check</param>
+            <param name="v0">vertex position 0</param>
+            <param name="v1">vertex position 1</param>
+            <param name="v2">vertex position 2</param>
+            <returns>True if <paramref name="pt"/> is inside the triangle or is located on an edge or vertex.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.TriangleContainsPointInclusive(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Checks if <paramref name="pt"/> is inside a triangle, including edges and vertices.  This only checks the XZ component like the triangle is in 2D! Works for CW and CWW.
+            </summary>
+            <param name="pt">Point to check</param>
+            <param name="v0">vertex position 0</param>
+            <param name="v1">vertex position 1</param>
+            <param name="v2">vertex position 2</param>
+            <returns>True if <paramref name="pt"/> is inside the triangle or is located on an edge or vertex.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.CircleContainsPoint(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2)">
+            <summary>
+            Checks if <paramref name="point"/> is inside a circle, including its circumference. Works for CW and CWW.
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="point"></param>
+            <returns>true in point <paramref name="point"/> is inside the circle.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.CircleIntersectsCircle(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Circle-circle intersection test.
+            </summary>
+            <param name="a_origin"></param>
+            <param name="a_radius"></param>
+            <param name="b_origin"></param>
+            <param name="b_radius"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.CircleIntersectsAABB(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Circle-AABB intersection test.
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.CircleIntersectsTriangle(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Circle-triangle intersection test.
+            </summary>
+            <param name="center"></param>
+            <param name="radius"></param>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <param name="v3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsAABB_SAT(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Line segment-AABB intersection test.
+            </summary>
+            <param name="p1">First point that defines the line segment in world space.</param>
+            <param name="p2">Second point that defines the line segment in world space.</param>
+            <param name="aabbCenter">The center of the AABB in world space.</param>
+            <param name="aabbExtents">The distance between the AABB center and the max X and Y values in world space.</param>
+            <returns>True if the line segment intersects the AABB and false otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsAABB_SAT(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Line segment-AABB intersection test in the LOCAL space of the AABB.
+            </summary>
+            <param name="p1">First point that defines the line segment, relative to the AABB center.</param>
+            <param name="p2">Second point that defines the line segment, relative to the AABB center.</param>
+            <param name="aabbExtents">The distance between the AABB center and the max X and Y values.</param>
+            <returns>True if the line segment intersects the AABB and false otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsAABB2(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@,Photon.Deterministic.FPVector2@,Photon.Deterministic.FP@)">
+            <summary>
+            Line segment-AABB intersection test in world space with computation of intersection points, normal and penetration.
+            If an intersection is detected, the test always returns two intersection points, which can be either intersections between the line
+            segment and an edge of the AABB or a segment point itself, if inside the AABB.
+            </summary>
+            <param name="p1">First point that defines the line segment in world space.</param>
+            <param name="p2">Second point that defines the line segment in world space.</param>
+            <param name="normal">Normal along which the line segment <paramref name="penetration"/> will be computed.</param>
+            <param name="aabbCenter">The center of the AABB in world space.</param>
+            <param name="aabbExtents">The distance between the AABB center and the max X and Y values in world space.</param>
+            <param name="i1">First intersection point.</param>
+            <param name="i2">Second intersection point.</param>
+            <param name="penetration">The penetration of the line segment along the <paramref name="normal"/>.</param>
+            <returns>True if the line segment intersects the AABB and false otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsAABB2(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@,Photon.Deterministic.FPVector2@,Photon.Deterministic.FP@)">
+            <summary>
+            Line segment-AABB intersection test in the LOCAL space of the AABB with computation of intersection points, normal and penetration.
+            If an intersection is detected, the test always returns two intersection points, which can be either intersections between the line
+            segment and an edge of the AABB or a segment point itself, if inside the AABB.
+            </summary>
+            <param name="p1">First point that defines the line segment, relative to the AABB center.</param>
+            <param name="p2">Second point that defines the line segment, relative to the AABB center.</param>
+            <param name="normal">Normal along which the line segment <paramref name="penetration"/> will be computed.</param>
+            <param name="aabbExtents">The distance between the AABB center and the max X and Y values in world space.</param>
+            <param name="i1">First intersection point, relative to the AABB center.</param>
+            <param name="i2">Second intersection point, relative to the AABB center.</param>
+            <param name="penetration">The penetration of the line segment along the <paramref name="normal"/>.</param>
+            <returns>True if the line segment intersects the AABB and false otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsAABB(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@,Photon.Deterministic.FPVector2@,Photon.Deterministic.FP@)">
+            <summary>
+            Line segment-AABB intersection test in world space with computation of intersection points and penetration.
+            </summary>
+            <param name="p1">First point that defines the line segment in world space.</param>
+            <param name="p2">Second point that defines the line segment in world space.</param>
+            <param name="aabbCenter">The center of the AABB in world space.</param>
+            <param name="aabbExtents">The distance between the AABB center and the max X and Y values in world space.</param>
+            <param name="i1">First intersection point in world space.</param>
+            <param name="i2">Second intersection point in world space.</param>
+            <param name="penetration">The penetration of the line segment along the closest AABB normal.</param>
+            <returns>
+            The number of intersections found between the line segment and the AABB edges.
+            If less than 2, the respective intersection point will be default.
+            </returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsAABB(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@,Photon.Deterministic.FPVector2@,Photon.Deterministic.FP@)">
+            <summary>
+            Line segment-AABB intersection test in the LOCAL space of the AABB with computation of intersection points and penetration.
+            </summary>
+            <param name="p1">First point that defines the line segment, relative to the AABB center.</param>
+            <param name="p2">Second point that defines the line segment, relative to the AABB center.</param>
+            <param name="aabbExtents">The distance between the AABB center and the max X and Y values in world space.</param>
+            <param name="i1">First intersection point, relative to the AABB center.</param>
+            <param name="i2">Second intersection point, relative to the AABB center.</param>
+            <param name="penetration">The penetration of the line segment along the closest AABB normal.</param>
+            <returns>
+            The number of intersections found between the line segment and the AABB edges.
+            If less than 2, the respective intersection point will be default.
+            </returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsLine(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2)">
+            <summary>
+            Line segment-line segment intersection test.
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="q1"></param>
+            <param name="q2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsLine(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@,Photon.Deterministic.FP@)">
+            <summary>
+            Line segment-line segment intersection test. 
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="q1"></param>
+            <param name="q2"></param>
+            <param name="point">Point of collision</param>
+            <param name="distance">Distance along p segment where the collision happens</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsLine(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@)">
+            <summary>
+            Line segment-line segment intersection test. 
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="q1"></param>
+            <param name="q2"></param>
+            <param name="point">Point of collision</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsLineAlwaysHit(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2@)">
+            <summary>
+            Line segment-line segment intersection test. Assumes lines are not colinear nor parallel.
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="q1"></param>
+            <param name="q2"></param>
+            <param name="point"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.InsideAABB(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP@)">
+            <summary>
+            Returns true if <paramref name="point"/> is inside centered AABB.
+            </summary>
+            <param name="point"></param>
+            <param name="extents"></param>
+            <param name="penetration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsCircleManifold(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2@)">
+            <summary>
+            Line segment-circle intersection test.
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="position"></param>
+            <param name="radius"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsCircle(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,System.Boolean)">
+            <summary>
+            Line segment-circle intersection test.
+            </summary>
+            <param name="p1">Start point of the line segment.</param>
+            <param name="p2">End point of the line segment.</param>
+            <param name="position">Position of the center of the circle in world space.</param>
+            <param name="radius">Radius of the circle.</param>
+            <param name="ignoreIfStartPointInside">If the intersection should be ignored if the start point of the line segment (<paramref name="p1"/>) is inside the circle.</param>
+            <returns>True if an intersection is detected. False otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsCircle(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2@,System.Boolean)">
+            <summary>
+            Line segment-circle intersection test.
+            </summary>
+            <param name="p1">Start point of the line segment.</param>
+            <param name="p2">End point of the line segment.</param>
+            <param name="position">Position of the center of the circle in world space.</param>
+            <param name="radius">Radius of the circle.</param>
+            <param name="point">Intersection point, if intersecting. Default otherwise.</param>
+            <param name="ignoreIfStartPointInside">If the intersection should be ignored if the start point of the line segment (<paramref name="p1"/>) is inside the circle.</param>
+            <returns>True if an intersection is detected. False otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.LineIntersectsCircle(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2@,Photon.Deterministic.FP@,System.Boolean)">
+            <summary>
+            Line segment-circle intersection test.
+            </summary>
+            <param name="p1">Start point of the line segment.</param>
+            <param name="p2">End point of the line segment.</param>
+            <param name="position">Position of the center of the circle in world space.</param>
+            <param name="radius">Radius of the circle.</param>
+            <param name="point">Intersection point, if intersecting. Default otherwise.</param>
+            <param name="normalizedDist">Normalize distance from <paramref name="p1"/> to <paramref name="p2"/> of the intersection point, if intersecting. Default otherwise.</param>
+            <param name="ignoreIfStartPointInside">If the intersection should be ignored if the start point of the line segment (<paramref name="p1"/>) is inside the circle.</param>
+            <returns>True if an intersection is detected. False otherwise.</returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.CircleIntersectsPolygon(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FPVector2[],Photon.Deterministic.FPVector2[])">
+            <summary>
+            Circle-polygon intersection test.
+            </summary>
+            <param name="circleCenter"></param>
+            <param name="circleRadius"></param>
+            <param name="polygonPosition"></param>
+            <param name="polygonRotationSinInverse"></param>
+            <param name="polygonRotationCosInverse"></param>
+            <param name="polygonVertices"></param>
+            <param name="polygonNormals"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.CircleIntersectsPolygon(Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2[],Photon.Deterministic.FPVector2[])">
+            <summary>
+            Circle-polygon intersection test.
+            </summary>
+            <param name="circleCenter"></param>
+            <param name="circleRadius"></param>
+            <param name="polygonPosition"></param>
+            <param name="polygonRotation"></param>
+            <param name="polygonVertices"></param>
+            <param name="polygonNormals"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.BoxIntersectsBox(Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP,Photon.Deterministic.FPVector2,Photon.Deterministic.FPVector2,Photon.Deterministic.FP)">
+            <summary>
+            Box-Box (2D) intersection test.
+            </summary>
+            <param name="aCenter"></param>
+            <param name="aExtents"></param>
+            <param name="aRotation"></param>
+            <param name="bCenter"></param>
+            <param name="bExtents"></param>
+            <param name="bRotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPCollision.ClosestDistanceToTriangle(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3@,Photon.Deterministic.FPVector3@)">
+            <summary>
+            Uses barycentric coordinates to calculate the closest point on a triangle. In conjunction with Fixed Point math this can get quite inaccurate when the triangle become large (more than 100 units) or tiny (less then 0.01 units).
+            </summary>
+            <param name="p">Point</param>
+            <param name="a">Vertex 0</param>
+            <param name="b">Vertex 1</param>
+            <param name="c">Vertex 2</param>
+            <param name="closestPoint">Resulting point on the triangle</param>
+            <param name="barycentricCoordinates">Barycentric coordinates of the point inside the triangle.</param>
+            <returns>Squared distance to point on the triangle.</returns>
+        </member>
+        <member name="T:Photon.Deterministic.FPMatrix4x4">
+            <summary>
+            Represents 4x4 column major matrix.
+            Each cell can be individually accessed as a field (M&lt;row&gt;&lt;column&gt;), with indexing
+            indexing property[row, column] or with indexing property[index].
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Zero">
+            <summary>
+            Matrix with 0s in every cell.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Identity">
+            <summary>
+            Matrix with 1s in the main diagonal and 0s in all other cells.
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M00">
+            <summary>First row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M10">
+            <summary>Second row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M20">
+            <summary>Third row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M30">
+            <summary>Fourth row, first column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M01">
+            <summary>First row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M11">
+            <summary>Second row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M21">
+            <summary>Third row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M31">
+            <summary>Fourth row, second column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M02">
+            <summary>First row, third column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M12">
+            <summary>Second row, third column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M22">
+            <summary>Third row, third column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M32">
+            <summary>Fourth row, third column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M03">
+            <summary>First row, fourth column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M13">
+            <summary>Second row, fourth column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M23">
+            <summary>Third row, fourth column</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPMatrix4x4.M33">
+            <summary>Fourth row, fourth column</summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.FromRows(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Create from rows - first four values set the first row, second four values - second row etc.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.FromColumns(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Create from columns - first four values set the first colunn, second four values - second column etc.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets or sets cell M&lt;row&gt;&lt;column&gt;.
+            </summary>
+            <param name="row"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Item(System.Int32)">
+            <summary>
+            Gets or sets cell M&lt;index%4&gt;&lt;index/4&gt;
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Transposed">
+            <summary>
+            Creates transposed matrix.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.IsIdentity">
+            <summary>
+            Returns true if this matrix is equal to the <see cref="P:Photon.Deterministic.FPMatrix4x4.Identity"/> matrix
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.InverseLookAt(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates inverse of look-at matrix, i.e. observer to world transformation. Equivalent to Unity's Matrix4x4.LookAt.
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="up"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.LookAt(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates look-at matrix, i.e. world to observer transformation. Unity's Matrix4x4.LookAt does the opposite - creates observer to world transformation. To get same behaviour use <see cref="M:Photon.Deterministic.FPMatrix4x4.InverseLookAt(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)"/>
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="up"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.Scale(Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a scaling matrix.
+            </summary>
+            <param name="scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.Translate(Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a translation matrix.
+            </summary>
+            <param name="translation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.op_Multiply(Photon.Deterministic.FPMatrix4x4,Photon.Deterministic.FPMatrix4x4)">
+            <summary>
+            Multiplies two matrices.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.LossyScale">
+            <summary>
+            Attempts to get a scale value from the matrix. 
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Inverted">
+            <summary>
+            Creates inverted matrix. Matrix with determinant 0 can not be inverted and result with <see cref="P:Photon.Deterministic.FPMatrix4x4.Zero"/>.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Determinant">
+            <summary>
+            Calculates determinant of this matrix.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Determinant3x3">
+            <summary>
+            Calculates determinant, taking only rotation and scale parts of this matrix into account.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPMatrix4x4.Rotation">
+            <summary>
+            Attempts to get a rotation quaternion from this matrix.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.MultiplyPoint(Photon.Deterministic.FPVector3)">
+            <summary>
+            Transforms a position by this matrix. Works with regulard 3D transformations and with projective transformations.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.MultiplyPoint3x4(Photon.Deterministic.FPVector3)">
+            <summary>
+            Transforms a position by this matrix. Faster than <see cref="M:Photon.Deterministic.FPMatrix4x4.MultiplyPoint(Photon.Deterministic.FPVector3)"/>, but works only with regulard 3D transformations.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.MultiplyVector(Photon.Deterministic.FPVector3)">
+            <summary>
+            Transforms a direction by this matrix. Only rotation and scale part of the matrix is taken into account.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.TRS(Photon.Deterministic.FPVector3,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a translation, rotation and scaling matrix.
+            Can be used to create local-to-world transformations.
+            Rotation is expected to be normalized.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.InverseTRS(Photon.Deterministic.FPVector3,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates an inversion translation, rotation and scaling matrix. This is significantly faster
+            than inverting TRS matrix. 
+            Can be used to create world-to-local transformations.
+            Rotation is expected to be normalized.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPMatrix4x4.Rotate(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Creates a rotation matrix. Rotation is expected to be normalized.
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.NullableNonNegativeFP">
+            <summary>
+            A serializable equivalent of Nullable&lt;FP&gt;.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.NullableNonNegativeFP.HasValue">
+            <summary>
+            Returns true if this nullable has a value.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.NullableNonNegativeFP.Value">
+            <summary>
+            Returns current value.
+            </summary>
+            <exception cref="T:System.NullReferenceException">If <see cref="P:Photon.Deterministic.NullableNonNegativeFP.HasValue"/> is false</exception>
+        </member>
+        <member name="M:Photon.Deterministic.NullableNonNegativeFP.ValueOrDefault">
+            <summary>
+            If <see cref="P:Photon.Deterministic.NullableNonNegativeFP.HasValue"/> is true, returns <see cref="P:Photon.Deterministic.NullableNonNegativeFP.Value"/>. Otherwise returns zero.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Deterministic.NullableFPVector2">
+            <summary>
+            A serializable equivalent of Nullable&lt;FPVector2&gt;.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.NullableFPVector2.HasValue">
+            <summary>
+            Returns true if this nullable has a value.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.NullableFPVector2.Value">
+            <summary>
+            Returns current value.
+            </summary>
+            <exception cref="T:System.NullReferenceException">If <see cref="P:Photon.Deterministic.NullableFPVector2.HasValue"/> is false</exception>
+        </member>
+        <member name="M:Photon.Deterministic.NullableFPVector2.ValueOrDefault(Photon.Deterministic.FPVector2)">
+            <summary>
+            If <see cref="P:Photon.Deterministic.NullableFPVector2.HasValue"/> is true, returns <see cref="P:Photon.Deterministic.NullableFPVector2.Value"/>. Otherwise returns <paramref name="v"/>.
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Deterministic.NullableFPVector3">
+            <summary>
+            A serializable equivalent of Nullable&lt;FPVector3&gt;.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.NullableFPVector3.HasValue">
+            <summary>
+            Returns true if this nullable has a value.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.NullableFPVector3.Value">
+            <summary>
+            Returns current value.
+            </summary>
+            <exception cref="T:System.NullReferenceException">If <see cref="P:Photon.Deterministic.NullableFPVector3.HasValue"/> is false</exception>
+        </member>
+        <member name="M:Photon.Deterministic.NullableFPVector3.ValueOrDefault(Photon.Deterministic.FPVector3)">
+            <summary>
+            If <see cref="P:Photon.Deterministic.NullableFPVector3.HasValue"/> is true, returns <see cref="P:Photon.Deterministic.NullableFPVector3.Value"/>. Otherwise returns <paramref name="v"/>.
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Deterministic.FPQuaternion">
+            <summary>
+            A Quaternion representing an orientation.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Product(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Creates product of two quaternions. Can be used to combine two rotations. Just like
+            in the case of <see cref="T:Photon.Deterministic.FPMatrix4x4"/> the righmost operand gets applied first.
+            This method computes the equivalent to the following pseduo-code:
+            <code>
+            FPQuaternion result;
+            result.x = (left.w * right.x) + (left.x * right.w) + (left.y * right.z) - (left.z * right.y);
+            result.y = (left.w * right.y) - (left.x * right.z) + (left.y * right.w) + (left.z * right.x);
+            result.z = (left.w * right.z) + (left.x * right.y) - (left.y * right.x) + (left.z * right.w);
+            result.w = (left.w * right.w) - (left.x * right.x) - (left.y * right.y) - (left.z * right.z);
+            return result;
+            </code>
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Conjugate(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Returns conjugate quaternion. This method computes the equivalent to the following pseduo-code:
+            <code>
+            return new FPQuaternion(-value.X, -value.Y, -value.Z, value.W);
+            </code>
+            Conjugate can be used instead of an inverse quaterion if <paramref name="value"/> is normalized.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.IsIdentity(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Checks if the quaternion is the identity quaternion
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.IsZero(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Checks if the quaternion is the invalid zero quaternion
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Dot(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Returns the dot product between two rotations. This method computes the equivalent to the following pseduo-code:
+            <code>
+            return a.X * b.X + a.Y * b.Y + a.Z * b.Z + a.W * b.W;
+            </code>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.FromToRotation(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a quaternion which rotates from <paramref name="fromVector"/> to <paramref name="toVector"/> (normalized internally).
+            If these vectors are known to be normalized or have magnitude close to 1, <see cref="M:Photon.Deterministic.FPQuaternion.FromToRotationSkipNormalize(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)"/> can be used for better performance.
+            </summary>
+            <param name="fromVector"></param>
+            <param name="toVector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.FromToRotationSkipNormalize(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a quaternion which rotates from <paramref name="fromVector"/> to <paramref name="toVector"/> (not normalized internally).
+            If these vectors are known to be normalized or have magnitude close to 1, use <see cref="M:Photon.Deterministic.FPQuaternion.FromToRotation(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3)"/> instead.
+            </summary>
+            <param name="fromVector"></param>
+            <param name="toVector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Lerp(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FP)">
+            <summary>
+            Interpolates between <paramref name="a"/> and <paramref name="b"/> by <paramref name="t"/> and normalizes the result afterwards. The parameter <paramref name="t"/> is clamped to the range [0, 1].
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.LerpUnclamped(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FP)">
+            <summary>
+            Interpolates between <paramref name="a"/> and <paramref name="b"/> by <paramref name="t"/> and normalizes the result afterwards.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.CreateFromYawPitchRoll(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns a rotation that rotates <paramref name="roll"/> radians around the z axis, <paramref name="pitch"/> radians around the x axis, and <paramref name="yaw"/> radians around the y axis.
+            </summary>
+            <param name="yaw">Yaw in radians</param>
+            <param name="pitch">Pitch in radians</param>
+            <param name="roll">Roll in radians</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Angle(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Returns the angle in degrees between two rotations <paramref name="a"/> and <paramref name="b"/>.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.LookRotation(Photon.Deterministic.FPVector3,System.Boolean)">
+            <summary>
+            Creates a rotation with the specified <paramref name="forward"/> direction and <see cref="P:Photon.Deterministic.FPVector3.Up"/>.
+            </summary>
+            <param name="forward"></param>
+            <param name="orthoNormalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.LookRotation(Photon.Deterministic.FPVector3,Photon.Deterministic.FPVector3,System.Boolean)">
+            <summary>
+            Creates a rotation with the specified <paramref name="forward"/> and <paramref name="up"/> directions.
+            </summary>
+            <param name="forward"></param>
+            <param name="up"></param>
+            <param name="orthoNormalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Slerp(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FP)">
+            <summary>
+            Spherically interpolates between <paramref name="from"/> and <paramref name="to"/> by <paramref name="t"/> and normalizes the result afterwards. <paramref name="t"/> is clamped to the range [0, 1].
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.SlerpUnclamped(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FP)">
+            <summary>
+            Spherically interpolates between <paramref name="from"/> and <paramref name="to"/> by <paramref name="t"/> and normalizes the result afterwards.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.RotateTowards(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion,Photon.Deterministic.FP)">
+            <summary>
+            Rotates a rotation <paramref name="from"/> towards <paramref name="to"/> by an angular step of <paramref name="maxDegreesDelta"/>.
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="maxDegreesDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Euler(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns a rotation that rotates <paramref name="z"/> degrees around the z axis, <paramref name="x"/> degrees around the x axis, and <paramref name="y"/> degrees around the y axis.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Euler(Photon.Deterministic.FPVector3)">
+            <summary>
+            Returns a rotation that rotates <paramref name="eulerAngles"/>.z degrees around the z axis, <paramref name="eulerAngles"/>.x degrees around the x axis, and <paramref name="eulerAngles"/>.y degrees around the y axis.
+            </summary>
+            <param name="eulerAngles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.AngleAxis(Photon.Deterministic.FP,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a rotation which rotates <paramref name="angle"/> degrees around <paramref name="axis"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="angle"></param>
+            <param name="axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.RadianAxis(Photon.Deterministic.FP,Photon.Deterministic.FPVector3)">
+            <summary>
+            Creates a rotation which rotates <paramref name="radians"/> radians around <paramref name="axis"/>.
+            </summary>
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            <param name="radians"></param>
+            <param name="axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Inverse(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Returns the Inverse of rotation <paramref name="value"/>. If <paramref name="value"/> is normalized it
+            will be faster to call <see cref="M:Photon.Deterministic.FPQuaternion.Conjugate(Photon.Deterministic.FPQuaternion)"/>. If <paramref name="value"/>
+            has a magnitude close to 0, <paramref name="value"/> will be returned.
+            <remarks><see cref="T:Photon.Deterministic.FPLut"/> needs to be initialised.</remarks>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.Normalize(Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Converts this quaternion <paramref name="value"/> to one with the same orientation but with a magnitude of 1. If <paramref name="value"/>
+            has a magnitude close to 0, <see cref="P:Photon.Deterministic.FPQuaternion.Identity"/> is returned.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.op_Multiply(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Computes product of two quaternions. Fully equivalent to Unity's Quaternion multiplication.
+            See <see cref="M:Photon.Deterministic.FPQuaternion.Product(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)"/> for details.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.op_Multiply(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FP)">
+            <summary>
+            Scales quaternion <paramref name="left"/> with <paramref name="right"/>.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.op_Multiply(Photon.Deterministic.FP,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Scales quaternion <paramref name="right"/> with <paramref name="left"/>.
+            </summary>
+            <param name="right"></param>
+            <param name="left"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.op_Addition(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Adds each component of <paramref name="right"/> to <paramref name="left"/>.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.op_Subtraction(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPQuaternion)">
+            <summary>
+            Subtracts each component of <paramref name="right"/> from <paramref name="left"/>.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.op_Multiply(Photon.Deterministic.FPQuaternion,Photon.Deterministic.FPVector3)">
+            <summary>
+            Rotates the point <paramref name="point"/> with rotation <paramref name="quat"/>.
+            </summary>
+            <param name="quat"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.Identity">
+            <summary>
+            Quaternion corresponding to "no rotation".
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPQuaternion.X">
+            <summary>The X component of the quaternion.</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPQuaternion.Y">
+            <summary>The Y component of the quaternion.</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPQuaternion.Z">
+            <summary>The Z component of the quaternion.</summary>
+        </member>
+        <member name="F:Photon.Deterministic.FPQuaternion.W">
+            <summary>The W component of the quaternion.</summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.Normalized">
+            <summary>
+            Returns this quaternion with magnitude of 1. Most API functions expect and return normalized quaternions,
+            so unless components get set manually, there should not be a need to normalize quaternions
+            </summary>
+            <seealso cref="M:Photon.Deterministic.FPQuaternion.Normalize(Photon.Deterministic.FPQuaternion)"/>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.Inverted">
+            <summary>
+            Creates this quaternion's inverse. If this quaternion is normalized, use <see cref="P:Photon.Deterministic.FPQuaternion.Conjugated"/> instead.
+            </summary>
+            <seealso cref="M:Photon.Deterministic.FPQuaternion.Inverse(Photon.Deterministic.FPQuaternion)"/>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.Conjugated">
+            <summary>
+            Creates this quaternion's conjugate. For normalized quaternions this property represents inverse rotation
+            and should be used instead of <see cref="P:Photon.Deterministic.FPQuaternion.Inverted"/>
+            </summary>
+            <seealso cref="M:Photon.Deterministic.FPQuaternion.Conjugate(Photon.Deterministic.FPQuaternion)"/>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.MagnitudeSqr">
+            <summary>
+            Returns square of this quaternion's magnitude.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.Magnitude">
+            <summary>
+            Return this quaternion's magnitude.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.FPQuaternion.AsEuler">
+            <summary>
+            Returns one of possible Euler angles representation, where rotations are performed around the Z axis, the X axis, and the Y axis, in that order. 
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPQuaternion.#ctor(Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Creates a new instance of FPQuaternion
+            </summary>
+            <param name="x">X component.</param>
+            <param name="y">Y component.</param>
+            <param name="z">Z component.</param>
+            <param name="w">W component.</param>
+        </member>
+        <member name="F:Photon.Deterministic.Protocol.Command.Index">
+            <summary>
+            Index of the player this command is for
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.Protocol.Command.Data">
+            <summary>
+            Command data
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.Protocol.SetPlayerData.Index">
+            <summary>
+            Player index
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.Protocol.SetPlayerData.Data">
+            <summary>
+            Serialized runtime player data
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.DeterministicSession.MaxVerifiedTicksPerUpdate">
+            <summary>
+            Limit the maximum number of verified ticks computed per update. Default is int.MaxValue.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.DeterministicSession.SpectatingOffsetSec">
+            <summary>
+            Specify the offset in sec that the simulation will run behind in Spectator mode. Value must be negative or 0. Default is -1 sec. 
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.DeterministicSessionConfig">
+            <summary> Parameterize internals of the Deterministic simulation and plugin (the Quantum server component). </summary>
+            <para>This config file will be synchronized between all clients of one session. Though each player starts its own simulation locally with his own version of the DeterministicConfig the server will distribute the config file instance of the first player that joined the plugin.</para>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.PlayerCount">
+            <summary> Player count the simulation is initialized for. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.ChecksumCrossPlatformDeterminism">
+            <summary> If Quantum should skip performing rollbacks and re-predict when it's not needed to retain determinism. Not used in lockstep mode. Mutually exclusive with the <see cref="F:Photon.Deterministic.DeterministicSessionConfig._BW_COMPAT_ExposeVerifiedStatusInsideSimulation"/> setting. </summary>
+            <summary> This allows Quantum frame checksumming to be deterministic across different runtime platforms, however it comes with quite a cost and should only be used during debugging. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.LockstepSimulation">
+            <summary> Runs the quantum simulation in lockstep mode, where no rollbacks are performed. s recommended to set input <see cref="F:Photon.Deterministic.DeterministicSessionConfig.InputDelayMin"/> to at least 10 and <see cref="F:Photon.Deterministic.DeterministicSessionConfig._BW_COMPAT_InputPacking"/> to 1. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.AggressiveSendMode">
+            <summary> If the server should skip buffering and perform aggressive input sends, only suitable for games with less or equal 4 players. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.UpdateFPS">
+            <summary> How many ticks per second Quantum should execute. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.ChecksumInterval">
+            <summary> How often we should send checksums of the frame state to the server for verification (useful during development, set to zero for release). Defined in frames. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.RollbackWindow">
+            <summary> How many frames are kept in the local ring buffer on each client. Controls how much Quantum can predict into the future. Not used in lockstep mode. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputHardTolerance">
+            <summary> How many frames the server will wait until it expires a frame and replaces all non-received inputs with repeated inputs or null's and sends it out to all players. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputRedundancy">
+            <summary> How much staggering the Quantum client should apply to redundant input resends. 1 = Wait one frame, 2 = Wait two frames, etc. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputRepeatMaxDistance">
+            <summary> How many frames Quantum will scan for repeatable inputs. 5 = Scan five frames forward and backwards, 10 = Scan ten frames, etc. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.SessionStartTimeout">
+            <summary> How long the Quantum server will wait for the room to become full until it forces a start of the Quantum session. Defined in seconds. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.TimeCorrectionRate">
+            <summary> How many times per second the server will send out time correction packages to make sure every clients time is synchronized. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.MinTimeCorrectionFrames">
+            <summary> How much the local client time must differ with the server time when a time correction package is received for the client to adjust it's local clock. Defined in frames. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.MinOffsetCorrectionDiff">
+            <summary> How many frames the current local input delay must diff to the current requested offset for Quantum to update the local input offset. Defined in frames. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.TimeScaleMin">
+            <summary> The smallest timescale that can be applied by the server. Defined in percent. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.TimeScalePingMin">
+            <summary> The ping value that the server will start lowering the time scale towards 'Time Scale Minimum'. Defined in milliseconds. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.TimeScalePingMax">
+            <summary> The ping value that the server will reach the 'Time Scale Minimum' value at, i.e. be at its slowest setting. Defined in milliseconds. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputDelayMin">
+            <summary> The minimum input offset a player can have. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputDelayMax">
+            <summary> The maximum input offset a player can have. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputDelayPingStart">
+            <summary> At what ping value that Quantum starts applying input offset. Defined in milliseconds. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputFixedSizeEnabled">
+            <summary> If the input data has a fixed byte length, enabling this saves bandwidth. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicSessionConfig.InputFixedSize">
+            <summary> Fixed input size. </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicChecksumResult.Client">
+            <summary>
+            The Photon Actor Id of the client that performed the checksum.
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicChecksumResult.Checksum">
+            <summary>
+            The checksum result.
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.FPLut">
+            <summary>
+            FP lookup table. Used internally by trigonometric and square root functions.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="F:Photon.Deterministic.FPLut.Log2APShiftForHPDivision">
+            <summary>
+            How much Log2 additional precision (AP) result needs to be shifted to allow for a safe FPHighPrecision division.
+            There must be a way to calculate this, but I have a brain fog atm.
+            6 is the safe choice here - max log2 is 48.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.FPLut.Init(System.String)">
+            <summary>
+            Initialize LUT from directory <paramref name="directoryPath"/>. The directory needs to have following files:
+            * FPSin.bytes
+            * FPCos.bytes
+            * FPTan.bytes
+            * FPAsin.bytes
+            * FPAcos.bytes
+            * FPAtan.bytes
+            * FPSqrt.bytes
+            </summary>
+            <param name="directoryPath"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPLut.Init(Photon.Deterministic.LutProvider)">
+            <summary>
+            Initialize LUT using <paramref name="lutProvider"/>. The provider needs to be able to load following paths:
+            * FPSin
+            * FPCos
+            * FPTan
+            * FPAsin
+            * FPAcos
+            * FPAtan
+            * FPSqrt
+            </summary>
+            <param name="lutProvider"></param>
+        </member>
+        <member name="M:Photon.Deterministic.FPLut.GenerateTables(System.String)">
+            <summary>
+            Generate lookup tables in <paramref name="directoryPath"/>.
+            </summary>
+            <param name="directoryPath"></param>
+        </member>
+        <member name="T:Photon.Deterministic.NullableFP">
+            <summary>
+            A serializable equivalent of Nullable&lt;FP&gt;.
+            </summary>
+            \ingroup MathAPI
+        </member>
+        <member name="P:Photon.Deterministic.NullableFP.HasValue">
+            <summary>
+            Returns true if this nullable has a value.
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.NullableFP.Value">
+            <summary>
+            Returns current value.
+            </summary>
+            <exception cref="T:System.NullReferenceException">If <see cref="P:Photon.Deterministic.NullableFP.HasValue"/> is false</exception>
+        </member>
+        <member name="M:Photon.Deterministic.NullableFP.ValueOrDefault(Photon.Deterministic.FP)">
+            <summary>
+            If <see cref="P:Photon.Deterministic.NullableFP.HasValue"/> is true, returns <see cref="P:Photon.Deterministic.NullableFP.Value"/>. Otherwise returns <paramref name="v"/>.
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V1_2_0_0">
+            <summary>
+            1.2.0
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V1_2_1_0">
+            <summary>
+            1.2.1
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V1_2_2_0">
+            <summary>
+            1.2.2
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V1_2_3_0">
+            <summary>
+            1.2.3RC1
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V1_2_3_1">
+            <summary>
+            1.2.3RC2, 1.2.4B1
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V2_0_0_0">
+            <summary>
+            1.2.3F3+, 1.2.4B2+ 
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V2_1_0_0">
+            <summary>
+            2.0.0 Beta+
+            </summary>
+        </member>
+        <member name="F:Photon.Deterministic.DeterministicProtocolVersions.V2_2_0_0">
+            <summary>
+            2.1.0 Alpha+
+            </summary>
+        </member>
+        <member name="T:Photon.Deterministic.RNGSession">
+            <summary>
+            PCG32 random generator, 16 bytes in size.
+            <a href="http://www.pcg-random.org">http://www.pcg-random.org</a>
+            </summary>
+        </member>
+        <member name="P:Photon.Deterministic.RNGSession.Peek">
+            <summary>
+            Returns a copy of this RNGSession, can be used to check what next random values will be
+            without affecting the state.
+            </summary>
+        </member>
+        <member name="M:Photon.Deterministic.RNGSession.Next">
+            <summary>
+            Returns a random FP within [0.0, 1.0).
+            </summary>
+            <returns>A random FP within [0.0, 1.0)</returns>
+        </member>
+        <member name="M:Photon.Deterministic.RNGSession.NextInclusive">
+            <summary>
+            Returns a random FP within [0.0, 1.0].
+            </summary>
+            <returns>A random FP within [0.0, 1.0]</returns>
+        </member>
+        <member name="M:Photon.Deterministic.RNGSession.Next(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns a random FP within [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>).
+            </summary>
+            <returns>A random FP within [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>)</returns>
+        </member>
+        <member name="M:Photon.Deterministic.RNGSession.NextInclusive(Photon.Deterministic.FP,Photon.Deterministic.FP)">
+            <summary>
+            Returns a random FP within [<paramref name="minInclusive"/>, <paramref name="maxInclusive"/>].
+            </summary>
+            <returns>A random FP within [<paramref name="minInclusive"/>, <paramref name="maxInclusive"/>]</returns>
+        </member>
+        <member name="M:Photon.Deterministic.RNGSession.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random int within [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>).
+            </summary>
+            <returns>A random int within [<paramref name="minInclusive"/>, <paramref name="maxExclusive"/>)</returns>
+        </member>
+        <member name="M:Photon.Deterministic.RNGSession.NextInclusive(System.Int32,System.Int32)">
+            <summary>
+            Returns a random int within [<paramref name="minInclusive"/>, <paramref name="maxInclusive"/>].
+            </summary>
+            <returns>A random int within [<paramref name="minInclusive"/>, <paramref name="maxInclusive"/>]</returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
+            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute">
+            <summary>Specifies that null is disallowed as an input even if the corresponding type allows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
+            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>Specifies that an output will not be null even if the corresponding type allows it. Specifies that an input argument was not null when the call returns.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>, the parameter may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified return value condition.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter may be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified return value condition.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
+            <summary>Specifies that the output will be non-null if the named parameter is non-null.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
+            <summary>Initializes the attribute with the associated parameter name.</summary>
+            <param name="parameterName">
+            The associated parameter name.  The output will be non-null if the argument to the parameter specified is non-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
+            <summary>Gets the associated parameter name.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute">
+            <summary>Applied to a method that will never return under any circumstance.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>Specifies that the method will not return if the associated Boolean parameter is passed the specified value.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified parameter value.</summary>
+            <param name="parameterValue">
+            The condition parameter value. Code after the method will be considered unreachable by diagnostics if the argument to
+            the associated parameter matches this value.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
+            <summary>Gets the condition parameter value.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
+            <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
+            <summary>Initializes the attribute with a field or property member.</summary>
+            <param name="member">
+            The field or property member that is promised to be not-null.
+            </param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
+            <summary>Initializes the attribute with the list of field and property members.</summary>
+            <param name="members">
+            The list of field and property members that are promised to be not-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.Members">
+            <summary>Gets field or property member names.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
+            <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values when returning with the specified return value condition.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
+            <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+            <param name="member">
+            The field or property member that is promised to be not-null.
+            </param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
+            <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+            <param name="members">
+            The list of field and property members that are promised to be not-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
+            <summary>Gets field or property member names.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2 @@
+# the private app version asset stores a GUID that is used to create unique Photon rooms (used as AppVersion). The file should be unique to each workstation hence ignoring it here.
+PhotonPrivateAppVersion.asset*

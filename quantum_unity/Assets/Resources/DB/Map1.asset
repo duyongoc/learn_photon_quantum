@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a366507de6e4aa44aea490bd69adace, type: 3}
+  m_Name: Map1
+  m_EditorClassIdentifier: 
+  Settings:
+    Identifier:
+      Path: Resources/DB/Map1
+      Guid:
+        Value: 1710471675203725834
+    UserAsset:
+      Id:
+        Value: 0
+    Scene: Game
+    ScenePath: Assets/Photon/QuantumDemo/Game/Game.unity
+    SceneGuid: 03bd5ba32b9950244a08f22579187d8b
+    WorldSize: 256
+    BucketsCount: 16
+    BucketsSubdivisions: 8
+    BucketingAxis: 0
+    SortingAxis: 1
+    TriangleMeshCellSize: 4
+    StaticColliders3DTrianglesData:
+      Id:
+        Value: 1027027002137996321
+    StaticColliders3DTrianglesBinaryFile: 
+    GridSizeX: 32
+    GridSizeY: 32
+    GridNodeSize: 4
+    NavMeshLinks: []
+    Regions: []
+    StaticColliders2D: []
+    StaticColliders3D:
+    - Rotation:
+        X:
+          RawValue: 0
+        Y:
+          RawValue: 0
+        Z:
+          RawValue: 0
+        W:
+          RawValue: 65536
+      Position:
+        X:
+          RawValue: 0
+        Y:
+          RawValue: 0
+        Z:
+          RawValue: 0
+      PhysicsMaterial:
+        Id:
+          Value: 0
+      ShapeType: 2
+      SphereRadius:
+        RawValue: 0
+      BoxExtents:
+        X:
+          RawValue: 655360
+        Y:
+          RawValue: 32768
+        Z:
+          RawValue: 655360
+      SmoothSphereMeshCollisions: 0
+      StaticData:
+        Name: BoxStaticCollider
+        Tag: Untagged
+        Layer: 0
+        Asset:
+          Id:
+            Value: 0
+        IsTrigger: 0
+        ColliderIndex: 0
+        MutableMode: 0
+      MutableMode: 0
+    MapEntities: []
+  Prototypes:
+  - PlayerId:
+    - PlayerRef:
+        _index: 1
+    Weapon:
+    - isEquipped:
+        Value: 0
+    CharacterController2D: []
+    CharacterController3D:
+    - Config:
+        Id:
+          Value: 4
+    NavMeshAvoidanceAgent: []
+    NavMeshAvoidanceObstacle: []
+    NavMeshPathfinder: []
+    NavMeshSteeringAgent: []
+    PhysicsBody2D: []
+    PhysicsBody3D:
+    - Version: 2
+      Config:
+        Value: 58
+      Mass:
+        RawValue: 65536
+      Drag:
+        RawValue: 32768
+      AngularDrag:
+        RawValue: 32768
+      CenterOfMass:
+        X:
+          RawValue: 0
+        Y:
+          RawValue: 0
+        Z:
+          RawValue: 0
+      RotationFreeze:
+        Value: 0
+      GravityScale:
+        _hasValue: 0
+        _value:
+          RawValue: 65536
+    PhysicsCollider2D: []
+    PhysicsCollider3D:
+    - ShapeConfig:
+        ShapeType: 2
+        SphereRadius:
+          RawValue: 0
+        PositionOffset:
+          X:
+            RawValue: 0
+          Y:
+            RawValue: 0
+          Z:
+            RawValue: 0
+        BoxExtents:
+          X:
+            RawValue: 32768
+          Y:
+            RawValue: 32768
+          Z:
+            RawValue: 32768
+        RotationOffset:
+          X:
+            RawValue: 0
+          Y:
+            RawValue: 0
+          Z:
+            RawValue: 0
+        UserTag: 0
+        IsPersistent: 1
+        CompoundShapes: []
+        IsSetFromSourceCollider: 0
+      Layer: 0
+      IsTrigger: 0
+      PhysicsMaterial:
+        Id:
+          Value: 0
+    PhysicsCallbacks2D: []
+    PhysicsCallbacks3D:
+    - CallbackFlags:
+        Value: 0
+    Transform2D: []
+    Transform2DVertical: []
+    Transform3D:
+    - Position:
+        X:
+          RawValue: 0
+        Y:
+          RawValue: 131072
+        Z:
+          RawValue: 0
+      Rotation:
+        X:
+          RawValue: 0
+        Y:
+          RawValue: 0
+        Z:
+          RawValue: 0
+    View: []
+    PhysicsJoints2D: []
+    PhysicsJoints3D: []

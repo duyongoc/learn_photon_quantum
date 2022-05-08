@@ -1,0 +1,1 @@
+﻿// IPrototypeAdapter.cs has been removed

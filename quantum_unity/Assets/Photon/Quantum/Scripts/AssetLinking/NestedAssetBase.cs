@@ -1,0 +1,1 @@
+﻿// NestedAssetBase.cs has been removed

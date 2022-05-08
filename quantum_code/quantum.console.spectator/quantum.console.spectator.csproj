@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin</OutputPath>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)'=='Debug' ">
+    <Reference Include="Photon-DotNet">
+      <HintPath>libs\Debug\Photon-NetStandard.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)'=='Release' ">
+    <Reference Include="Photon-DotNet">
+      <HintPath>libs\Release\Photon-NetStandard.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <Compile Include="*.cs" />
+    <Compile Include="PhotonLoadbalancingApi/*.cs" />
+    <Compile Include="PhotonRealtimeAsync\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\quantum.code\quantum.code.csproj">
+      <Name>quantum.code</Name>
+      <Project>{FBF32099-B197-4AB9-8E5A-B44D9D3750BD}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PhotonDeterministic">
+      <HintPath Condition="'$(Configuration)' == 'Release'">..\..\assemblies\release\PhotonDeterministic.dll</HintPath>
+      <HintPath Condition="'$(Configuration)' == 'Debug'">..\..\assemblies\debug\PhotonDeterministic.dll</HintPath>
+    </Reference>
+    <Reference Include="quantum.core">
+      <HintPath Condition="'$(Configuration)' == 'Release'">..\..\assemblies\release\quantum.core.dll</HintPath>
+      <HintPath Condition="'$(Configuration)' == 'Debug'">..\..\assemblies\debug\quantum.core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

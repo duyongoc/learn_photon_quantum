@@ -1,0 +1,10 @@
+﻿input
+{
+	FP moveHorizontal;
+	FP moveVertical;
+
+	button Action;
+	button Attack;
+	button Defend;
+	button Jump;
+}

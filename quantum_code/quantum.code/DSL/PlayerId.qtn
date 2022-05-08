@@ -1,0 +1,4 @@
+﻿component PlayerId
+{
+    player_ref PlayerRef;
+}
